@@ -14,3 +14,7 @@ Alguns recursos para você começar, se este é o seu primeiro projeto Flutter :
 Para obter ajuda para começar o desenvolvimento do Flutter, consulte o
 [documentação on-line] (https://docs.flutter.dev/), que oferece tutoriais
 amostras, orientação sobre desenvolvimento móvel e uma referência completa à API.
+
+## Aplicação
+
+Uma aplicação de estudo de como funciona a arquitetura dart em conjunto do framework flutter
