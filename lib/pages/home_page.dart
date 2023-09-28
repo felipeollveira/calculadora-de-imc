@@ -100,39 +100,62 @@ class _IMCCalculatorState extends State<IMCCalculator> {
       } else {
         weight = 0;
       }
-      
     });
   }
 
-  void aumentaIdade(){
-       setState(() {
-       if (year <= 200 ) {
-            year++;
-          } else {
-            year = 200;
-          }
-    });
-  }
-    void diminuIdade(){
-        setState(() {
-          if (year > 0) {
-            year--;
-          } else {
-            year = 0;
-          }
-      
+  void aumentaIdade() {
+    setState(() {
+      if (year <= 200) {
+        year++;
+      } else {
+        year = 200;
+      }
     });
   }
 
+  void diminuIdade() {
+    setState(() {
+      if (year > 0) {
+        year--;
+      } else {
+        year = 0;
+      }
+    });
+  }
 
+  String classes(double bmi) {
+    if (bmi == 0) {
+      return '';
+    } else if (bmi <= 18.40) {
+      return 'Abaixo do peso';
+    } else if (bmi >= 18.50 && bmi < 24.90) {
+      return 'Parabéns! Peso normal';
+    } else if (bmi >= 25 && bmi < 29.90) {
+      return 'Sobrepeso';
+    } else {
+      return 'Procure um médico. Nível de IMC elevado.'; // Adicione um valor padrão se necessário
+    }
+  }
+
+  Color getColor(double bmi) {
+    if (bmi == 0) {
+      return Colors.white; // Define a cor padrão
+    } else if (bmi <= 18.40) {
+      return Colors.red; // Define a cor vermelha para IMC menor ou igual a 18.40
+    } else if (bmi < 24.90) {
+      return Colors.green; // Define a cor verde para IMC menor que 24.90
+    } else if (bmi < 29.90) {
+      return Colors.orange; // Define a cor laranja para IMC menor que 29.90
+    } else {
+      return Colors.red; // Define a cor vermelha para IMC maior ou igual a 29.90
+    }
+  }
 
   double calculateBMI() {
     // Converte altura para metros
     double heightInMeters = height / 100.0;
-
     // Calcula o IMC
     double bmi = weight / (heightInMeters * heightInMeters);
-
     return bmi;
   }
 
@@ -229,7 +252,8 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                           fontWeight: FontWeight.w900,
                         ),
                       ),
-                      const Text(
+
+                         const Text(
                         'kg',
                         style: TextStyle(
                           color: Colors.white,
@@ -270,7 +294,7 @@ class _IMCCalculatorState extends State<IMCCalculator> {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 14),
               width: 200,
-              child:  Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
@@ -286,14 +310,14 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                       year.toString(),
-                        style: TextStyle(
+                        year.toString(),
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'ys',
                         style: TextStyle(
                           color: Colors.white,
@@ -303,12 +327,12 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                       ),
                     ],
                   ),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
                         onTap: aumentaIdade,
-                        child: Icon(
+                        child: const Icon(
                           Icons.add_circle,
                           color: Color.fromARGB(255, 255, 255, 255),
                           size: 65,
@@ -316,42 +340,64 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                       ),
                       InkWell(
                         onTap: diminuIdade,
-                        child: Icon(
+                        child: const Icon(
                           Icons.remove_circle,
                           color: Color.fromARGB(255, 214, 214, 214),
                           size: 65,
                         ),
                       ),
-                    ]
-                   ),
+                    ],
+                  ),
                 ],
               ),
             ),
           ],
         ),
-
-        Column(
-          children: [
-            // Exibir o resultado do IMC
-            const Text(
-              'IMC',
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Color.fromARGB(228, 0, 140, 255),
-                fontWeight: FontWeight.w400,
-                height: 0,
-              ),
-            ),
-            Text(
-              calculateBMI().toStringAsFixed(2),
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ],
+const SizedBox(
+  height: 16.0, // Defina a altura desejada
+),
+              Container(
+           decoration: BoxDecoration(
+          color: const Color.fromARGB(22, 255, 255, 255),
+           borderRadius: BorderRadius.circular(10.0),
         ),
+        padding: const EdgeInsets.all(30.0),
+        width:440, // Ajuste o valor de padding conforme necessário
+        child: Center(
+          child: Column(
+            children: [
+              // Exibir o resultado do IMC
+              const Text(
+                'IMC',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: Color.fromARGB(48, 255, 255, 255),
+                  fontWeight: FontWeight.bold,
+                  height: 0,
+                ),
+              ),
+              Text(
+                calculateBMI().toStringAsFixed(2),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: getColor(calculateBMI()),
+                ),
+              ),
+              Text(
+                classes(calculateBMI()),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: getColor(calculateBMI()),
+                  fontWeight: FontWeight.bold,
+                  height: 0,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
       ],
     );
   }
