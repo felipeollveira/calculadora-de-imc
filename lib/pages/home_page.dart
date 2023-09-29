@@ -69,7 +69,7 @@ class _HomePage extends State<HomePage> {
                       ),
                     ),
                   )
-                : IMCCalculator(),
+                : const IMCCalculator(),
           ),
         ),
       ),
@@ -78,13 +78,16 @@ class _HomePage extends State<HomePage> {
 }
 
 class IMCCalculator extends StatefulWidget {
+  const IMCCalculator({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _IMCCalculatorState createState() => _IMCCalculatorState();
 }
 
 class _IMCCalculatorState extends State<IMCCalculator> {
-  double height = 145.0;
-  double weight = 60.0;
+  double height = 189.0;
+  double weight = 72.0;
   int year = 19;
 
   void aumentarPeso() {
@@ -105,10 +108,10 @@ class _IMCCalculatorState extends State<IMCCalculator> {
 
   void aumentaIdade() {
     setState(() {
-      if (year <= 200) {
+      if (year <= 99) {
         year++;
       } else {
-        year = 200;
+        year = 0;
       }
     });
   }
@@ -128,9 +131,9 @@ class _IMCCalculatorState extends State<IMCCalculator> {
       return '';
     } else if (bmi <= 18.40) {
       return 'Abaixo do peso';
-    } else if (bmi >= 18.50 && bmi < 24.90) {
+    } else if (bmi >= 18.41 && bmi < 24.90) {
       return 'Parabéns! Peso normal';
-    } else if (bmi >= 25 && bmi < 29.90) {
+    } else if (bmi >= 24.91 && bmi < 29.90) {
       return 'Sobrepeso';
     } else {
       return 'Procure um médico. Nível de IMC elevado.'; // Adicione um valor padrão se necessário
@@ -143,7 +146,7 @@ class _IMCCalculatorState extends State<IMCCalculator> {
     } else if (bmi <= 18.40) {
       return Colors.red; // Define a cor vermelha para IMC menor ou igual a 18.40
     } else if (bmi < 24.90) {
-      return Colors.green; // Define a cor verde para IMC menor que 24.90
+      return const Color.fromARGB(255, 61, 170, 65); // Define a cor verde para IMC menor que 24.90
     } else if (bmi < 29.90) {
       return Colors.orange; // Define a cor laranja para IMC menor que 29.90
     } else {
@@ -190,7 +193,7 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                     ),
                   ),
                   const Text(
-                    ' cm',
+                    'cm',
                     style: TextStyle(
                       letterSpacing: 0,
                       height: 2,
