@@ -40,7 +40,7 @@ class _HomePage extends State<HomePage> {
           'Calculadora de IMC',
           style: TextStyle(
             fontSize: 18,
-            color: Color.fromARGB(255, 226, 226, 226),
+            color: Color.fromARGB(26, 226, 226, 226),
             fontWeight: FontWeight.w300,
           ),
         ),
@@ -87,8 +87,8 @@ class IMCCalculator extends StatefulWidget {
 
 class _IMCCalculatorState extends State<IMCCalculator> {
   double height = 189.0;
-  double weight = 72.0;
-  int year = 19;
+  double weight = 0.0;
+  int year = 0;
 
   void aumentarPeso() {
     setState(() {
@@ -132,7 +132,7 @@ class _IMCCalculatorState extends State<IMCCalculator> {
     } else if (bmi <= 18.40) {
       return 'Abaixo do peso';
     } else if (bmi >= 18.41 && bmi < 24.90) {
-      return 'Parabéns! Peso normal';
+      return 'Peso normal';
     } else if (bmi >= 24.91 && bmi < 29.90) {
       return 'Sobrepeso';
     } else {
@@ -357,15 +357,15 @@ class _IMCCalculatorState extends State<IMCCalculator> {
           ],
         ),
 const SizedBox(
-  height: 16.0, // Defina a altura desejada
+  height: 16.0, //espaçamento
 ),
-              Container(
-           decoration: BoxDecoration(
+            Container(
+          decoration: BoxDecoration(
           color: const Color.fromARGB(22, 255, 255, 255),
-           borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         padding: const EdgeInsets.all(30.0),
-        width:440, // Ajuste o valor de padding conforme necessário
+        width:440,
         child: Center(
           child: Column(
             children: [
@@ -400,8 +400,33 @@ const SizedBox(
           ),
         ),
       ),
+      const SizedBox(
+  height: 29.0, // Espaçamento
+  ),
+   Container(
+    
+    child: Center(
+      
+              child: TextButton(
+                onPressed: () {
+                  print('Botão de texto pressionado');
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Color.fromARGB(255, 6, 20, 0), 
+                  backgroundColor: Color.fromARGB(212, 248, 248, 248),       
+                  padding: const EdgeInsets.all(16.0),                 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0), 
+                  ),
+                ),
+                child: const Text('Salvar resultado'),
+              )
+                  ),
+                )
 
       ],
+      
     );
+    
   }
 }
