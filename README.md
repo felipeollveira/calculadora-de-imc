@@ -18,3 +18,7 @@ amostras, orientação sobre desenvolvimento móvel e uma referência completa �
 ## Aplicação
 
 Uma aplicação de estudo de como funciona a arquitetura dart em conjunto do framework flutter
+<br>
+<img src="https://uploaddeimagens.com.br/images/004/623/817/full/calc-peso-n.png?1696170229" 
+ alt="Foto da calculadora em peso normal"
+ height="600">
