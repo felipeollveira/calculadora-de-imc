@@ -1,6 +1,6 @@
 # Calculadora de IMC com Flutter
 
- Atualmente configurada para android, Windows, linux, mac e ios !
+ Atualmente configurada para android, web e ios !
 
 ## Introdução
 
