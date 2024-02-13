@@ -37,41 +37,30 @@ class _HomePage extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Calculadora de IMC',
+          '💪Calcule seu imc',
           style: TextStyle(
-            fontSize: 18,
-            color: Color.fromARGB(78, 226, 226, 226),
-            fontWeight: FontWeight.w300,
+            fontSize: 20,
+            color: Color.fromARGB(255, 190, 190, 190),
+            fontWeight: FontWeight.w800,
           ),
         ),
-        backgroundColor: Color.fromARGB(12, 138, 138, 138),
-        toolbarHeight: 120,
-        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 0, 103, 221),
+        toolbarHeight: 60,
+        centerTitle: false,
+        
       ),
       backgroundColor: Color.fromARGB(64, 68, 68, 68),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0), // Margem em torno de todos os elementos
-        child: Center(
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 400),
-            child: showMessage
-                ? Container(
-                    key: const Key('message'),
-                    color: Colors.black,
-                    child: const Center(
-                      child: Text(
-                        'Carregando...',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white38,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ),
-                  )
-                : const IMCCalculator(),
+
+      body: Column(
+        children: [
+          SizedBox(height: 80),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: IMCCalculator(),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -86,8 +75,8 @@ class IMCCalculator extends StatefulWidget {
 
 class _IMCCalculatorState extends State<IMCCalculator> {
   double height = 189.0;
-  double weight = 0.0;
-  int year = 0;
+  double weight = 72.0;
+  int year = 19;
 
   void aumentarPeso() {
     setState(() {
@@ -131,7 +120,7 @@ class _IMCCalculatorState extends State<IMCCalculator> {
     } else if (bmi <= 18.40) {
       return 'Abaixo do peso';
     } else if (bmi >= 18.41 && bmi < 24.90) {
-      return 'Peso normal';
+      return 'Peso ideal';
     } else if (bmi >= 24.91 && bmi < 29.90) {
       return 'Sobrepeso';
     } else {
@@ -214,9 +203,9 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                 activeColor: const Color.fromARGB(255, 0, 174, 255),
                 inactiveColor: const Color.fromARGB(44, 158, 158, 158),
               ),
+              const SizedBox(height: 30), // Adicionando mais espaço abaixo do Slider
             ],
           ),
-    
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -250,7 +239,6 @@ class _IMCCalculatorState extends State<IMCCalculator> {
                             fontWeight: FontWeight.w900,
                           ),
                         ),
-    
                         const Text(
                           'kg',
                           style: TextStyle(
@@ -397,8 +385,6 @@ class _IMCCalculatorState extends State<IMCCalculator> {
           const SizedBox(
             height: 30.0,
           ),
-          
-         
         ],
       ),
     );
