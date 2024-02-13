@@ -18,3 +18,5 @@ amostras, orientação sobre desenvolvimento móvel e uma referência completa �
 ## Aplicação
 
 Uma aplicação de estudo de como funciona a arquitetura dart em conjunto do framework flutter
+<br>
+
