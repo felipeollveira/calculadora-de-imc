@@ -51,9 +51,9 @@ class _HomePage extends State<HomePage> {
       ),
       backgroundColor: Color.fromARGB(64, 68, 68, 68),
 
-      body: Column(
+      body: const Column(
         children: [
-          SizedBox(height: 80),
+          SizedBox(height: 100),
           Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
